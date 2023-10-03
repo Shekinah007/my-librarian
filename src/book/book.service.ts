@@ -1,7 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Book, BookSchema } from './dto/Book.dto';
+import { AddBookDto } from './dto/AddBook.dto';
 
 @Injectable()
 export class BookService {
+    constructor(@InjectModel(Book.name) private bookModel: Model<Book>) { }
 
     getBooks() {
         return [
@@ -56,6 +61,11 @@ export class BookService {
                 releaseDate: '1987'
             }
         ]
+    }
+
+    async addBook(bookDto: AddBookDto) {
+        let createdBook = await this.bookModel.create({ releaseDate: "UNKNOWN", ...bookDto });
+        return createdBook.save()
     }
 
     getBookByAuthor(author) {

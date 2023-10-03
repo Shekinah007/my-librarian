@@ -1,7 +1,7 @@
 import { Prop } from "@nestjs/mongoose";
 import { IsNotEmpty } from "class-validator";
 
-export class AddBook {
+export class AddBookDto {
     @Prop()
     @IsNotEmpty()
     title: string;
@@ -10,5 +10,6 @@ export class AddBook {
     @IsNotEmpty()
     author: string;
 
+    @Prop()
     releaseDate: string = "UNKNOWN";
 }
