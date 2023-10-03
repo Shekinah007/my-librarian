@@ -12,7 +12,7 @@ export class BookController {
         return this.bookService.getBooks()
     }
 
-    @Post("book")
+    @Post("findByAuthor")
     getBookByAuthor(@Body("author") author) {
         return this.bookService.getBookByAuthor(author)
     }
