@@ -72,8 +72,15 @@ export class BookService {
     }
 
     async getBookByAuthor(author) {
-        // let books = this.getBooks()
-        // return books.find(book => book.author === author)
-        return await this.bookModel.findOne({ author: author })
+        // return await this.bookModel.findOne({ author }).collation({ locale: 'en', strength: 2 })
+        return await this.bookModel.find({
+            author: {
+                $regex: `${author}`, $options: 'i'
+            }
+        })
+        // return await this.bookModel.findOne({ author: author })
     }
 }
+// db.InspirationalWomen.find({first_name: { $regex: /Harriet/i} })
+// db.InspirationalWomen.find({ first_name: { $regex: /Harriet/i } })
+// $regex: `^${talentPattern}`, $options: 'i'
