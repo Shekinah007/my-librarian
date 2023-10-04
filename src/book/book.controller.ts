@@ -14,7 +14,7 @@ export class BookController {
 
 
 
-    @Post("findByTitleOrAuthor")
+    @Post("findBook")
     getBook(@Body("searchText") searchText) {
         return this.bookService.getBookByTitleOrAuthor(searchText)
     }

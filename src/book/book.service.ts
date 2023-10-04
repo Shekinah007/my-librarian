@@ -30,11 +30,7 @@ export class BookService {
     }
 
     async getBookByTitleOrAuthor(query) {
-        return await this.bookModel.find({ title: { $regex: `${query}`, $options: 'i' } })
-
-        return await this.bookModel.find({ $or: [{ title: query }, { author: query }] })
-        // Model.find({ $or: [{ field1: value1 }, { field2: value2 }] })
-
+        return await this.bookModel.find({ $or: [{ title: { $regex: `${query}`, $options: 'i' } }, { author: { $regex: `${query}`, $options: 'i' } }] })
     }
 
     async getBookById(id: string) {
