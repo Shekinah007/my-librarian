@@ -28,6 +28,20 @@ export class BookService {
     async getBookByTitle(title) {
         return await this.bookModel.find({ title: { $regex: `${title}`, $options: 'i' } })
     }
+
+    async getBookByTitleOrAuthor(query) {
+        return await this.bookModel.find({ title: { $regex: `${query}`, $options: 'i' } })
+
+        return await this.bookModel.find({ $or: [{ title: query }, { author: query }] })
+        // Model.find({ $or: [{ field1: value1 }, { field2: value2 }] })
+
+    }
+
+    async getBookById(id: string) {
+        return await this.bookModel.find({ _id: id })
+    }
+
+
 }
 // db.InspirationalWomen.find({first_name: { $regex: /Harriet/i} })
 // db.InspirationalWomen.find({ first_name: { $regex: /Harriet/i } })

@@ -12,19 +12,33 @@ export class BookController {
         return this.bookService.getBooks()
     }
 
+
+
+    @Post("findByTitleOrAuthor")
+    getBook(@Body("searchText") searchText) {
+        return this.bookService.getBookByTitleOrAuthor(searchText)
+    }
+
     @Post("findByAuthor")
     getBookByAuthor(@Body("author") author) {
         return this.bookService.getBookByAuthor(author)
     }
+
 
     @Post("findByTitle")
     getBookByTitle(@Body("title") title) {
         return this.bookService.getBookByTitle(title)
     }
 
+
     @Post("addBook")
     addNewBook(@Body() addBookDto: AddBookDto) {
         return this.bookService.addBook(addBookDto)
+    }
+
+    @Post("findById")
+    getBookById(@Body("id") id: string) {
+        return this.bookService.getBookById(id)
     }
 
 
