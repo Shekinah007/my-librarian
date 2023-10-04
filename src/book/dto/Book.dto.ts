@@ -15,6 +15,9 @@ export class Book {
 
     @Prop()
     releaseDate: string = "UNKNOWN";
+
+    @Prop()
+    imageLink: string;
 }
 
 export const BookSchema = SchemaFactory.createForClass(Book)

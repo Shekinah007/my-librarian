@@ -12,4 +12,7 @@ export class AddBookDto {
 
     @Prop()
     releaseDate: string = "UNKNOWN";
+
+    @Prop()
+    imageLink: string;
 }

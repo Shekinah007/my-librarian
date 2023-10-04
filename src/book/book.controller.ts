@@ -17,8 +17,15 @@ export class BookController {
         return this.bookService.getBookByAuthor(author)
     }
 
+    @Post("findByTitle")
+    getBookByTitle(@Body("title") title) {
+        return this.bookService.getBookByTitle(title)
+    }
+
     @Post("addBook")
     addNewBook(@Body() addBookDto: AddBookDto) {
         return this.bookService.addBook(addBookDto)
     }
+
+
 }
