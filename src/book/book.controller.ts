@@ -12,6 +12,11 @@ export class BookController {
         return this.bookService.getBooks()
     }
 
+    @Get("findBook/:search")
+    getBookRedo(@Param("search") search: string) {
+        return this.bookService.getBookByTitleOrAuthor(search)
+    }
+
     @Post("findBook")
     getBook(@Body("searchText") searchText) {
         return this.bookService.getBookByTitleOrAuthor(searchText)
