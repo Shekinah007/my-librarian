@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Book, BookSchema } from './dto/Book.dto';
+import { Book } from './dto/Book.dto';
 import { AddBookDto } from './dto/AddBook.dto';
 
 @Injectable()
@@ -37,6 +37,9 @@ export class BookService {
         return await this.bookModel.find({ _id: id })
     }
 
+    async deleteBook(id: string) {
+        return await this.bookModel.deleteOne({ _id: id })
+    }
 
 }
 // db.InspirationalWomen.find({first_name: { $regex: /Harriet/i} })
